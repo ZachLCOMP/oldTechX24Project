@@ -1,0 +1,8 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t','us-central1-docker.pkg.dev/${PROJECT_ID}/ai-bucket-list/bucket-list', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-central1-docker.pkg.dev/${PROJECT_ID}/ai-bucket-list/bucket-list']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['run', 'deploy', 'mywebappservice', '--image', 'us-west2-docker.pkg.dev/${PROJECT_ID}/ai-bucket-list/bucket-list','--region', 'us-west2', '--allow-unauthenticated', '--port', '8501']
+

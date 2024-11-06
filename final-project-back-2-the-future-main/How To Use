@@ -1,0 +1,24 @@
+Link to Final Deployed Website: https://digitalbucketlist-6igjenazda-wl.a.run.app
+
+
+***How To Use***
+
+*Project Set-Up*
+To run the project locally, first you must set your project id through using the gcloud config set project <PROJECT_ID>. After you've set your project ID, you should be able to use all of the necessary APIs without issue. To run the project, navigate to the final-project-back-2-the-future/code file & run streamlit run Home.py --server.enableCORS=false from the console. 
+
+*Testing Unit Test*
+Becuase we used the Streamlit testing API to do unit test, you must run each testing file locally through console. Luckily, in order to run the file all you have to do is press python <filename> (i.e. python travelTest.py). For some reason, the Streamlit testing API does not handle multiple test being ran at once well, so make sure to do it one at a time. You'll know that a test was sucessful, in that it didn't throw any errors, if the console doesn't return anything. If there is an error, then it will appear on the console. Beware for run time errors as they could mean any one of three things: the test genuinely doesn't work, the serves is overwhelmed and caused a crash (wait a few seconds & try running again), or the user behavior being tested takes longer than the default 3 seconds (instead of at.run() try at.run(time=10)). 
+
+**Testing Travel Page**
+To test the travel page you have 1 of 4 ways: 
+- You can test how it reacts when the user knows exactly where they want to go. To get the best results, list a specific city & country. The website will take you straight into the plan your trip portion. 
+- You can test how it reacts when the user input an inspiration photo. To get the best results, input a photo file with a simple terrain (beach, forest, city, etc.). The website then return a list of 2-3 places that fit the theme of the photo. After the content is done generating, a dropdown option will appear to let you choose your final destination & start planning your trip. 
+- You can test how it reacts to being given a variety of options. To get the best results, select a continent & THEN SELECT AT LEAST ONE COUNTRY. If you do not select a country, the AI will simply return a list of popular travel destinations. The rest of the website's behavior is the same as the point above. 
+- Or you can test how it react to returning users through logging into the home page as tester (case matters) for both the username & password. Once verified, you should see a description of a previous trip where you will have the option to download a csv file or start planning a whole new trip. This feature may not work locally as your sevice account has not been given access to the necessary bigQuery but it does work on the deployed app. 
+
+
+**Testing Hobby Page**
+Implementation changes for hobby finder: Originally, hobby finder required that you saved your wanted hobbies in order for them to show up on the suggestion page. That functionality, along with the "remove", "more hobbies", and "finalize" button were all scrapped due to ongoing issues with button nesting. In addiiton, the time constraint for the project made it a better idea to ct ompromise and find a different way to show the users their hobbies and save them. In the new functionality, the users simply choose how many hobbies they want the AI to generate, then get displayed the hobby along with a picture, description, and next steps. Once all the hobbies are generated, the user can download them as a CSV file so they can reference it later on. Link to deployed app: https://digitalbucketlist-6igjenazda-wl.a.run.app/Hobby
+
+TO RUN TEST: 1 cd into code directory 2 run: pytest tests/hobbyTests.py TO RUN STREAMLIT APP: 1 cd into code directory 2. run streamlit run Home.py --server.enableCORS=false
+**Testing Career Page**
